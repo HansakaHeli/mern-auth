@@ -7,11 +7,9 @@ dotenv.config();
 const app = express();
 const PORT = 5000;
 
+app.use(express.json());
 
-app.get("/test",(req,res)=>{
-    res.send("It works");
-})
-
+app.use("/auth", require("./routers/userRouter"));
 
 // connect to mongodb
 mongoose.connect(process.env.MDB_CONNECT,{

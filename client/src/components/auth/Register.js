@@ -1,3 +1,4 @@
+import axios from "axios"
 import React, { useState } from "react";
 
 function Register() {
@@ -5,6 +6,25 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVerify, setpasswordVerify] = useState("");
+
+    async function register(e){
+        e.preventDefault();
+
+        try {
+
+            // Create an object
+            const registerData ={
+                email, // email: email
+                password,
+                passwordVerify
+            }
+
+            await axios.post("http://localhost:5000/auth/",registerData);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
     return ( <div>

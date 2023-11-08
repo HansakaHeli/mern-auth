@@ -4,7 +4,7 @@ function auth(req,res,next){
     try {
 
         const token = req.cookies.token; // get the token
-        console.log(token);
+        //console.log(token);
 
         if(!token){
             return res.status(401).json({errorMessge: "Unauthorized"});

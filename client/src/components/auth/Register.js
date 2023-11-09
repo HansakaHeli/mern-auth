@@ -19,7 +19,7 @@ function Register() {
                 passwordVerify
             }
 
-            await axios.post("http://localhost:5000/auth/",registerData);
+            await axios.post("http://localhost:5000/auth",registerData);
             
         } catch (error) {
             console.error(error);
@@ -30,7 +30,7 @@ function Register() {
     return ( <div>
 
         <h1>Register a new account</h1>
-        <form>
+        <form onSubmit={register}>
             <input 
                 type="email" 
                 placeholder="Email"

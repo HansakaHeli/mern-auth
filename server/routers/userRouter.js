@@ -8,7 +8,8 @@ const jwt = require("jsonwebtoken");
 router.post("/",async (req,res)=>{
     try {
 
-        console.log("hi")
+        // console.log("himnmn")
+        console.log(req.body)
 
         // We can get data because we use app.use(express.json()); meddleware
         const {email, password, passwordVerify} = req.body;

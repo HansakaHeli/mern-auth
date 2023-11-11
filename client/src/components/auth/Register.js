@@ -1,11 +1,18 @@
 import axios from "axios"
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVerify, setpasswordVerify] = useState("");
+
+    const {getLoddedIn} = useContext(AuthContext);
+    //{} distruct the object. Get only getLoggedIn fucntion
+
+    const navigate = useNavigate();
 
     async function register(e){
         e.preventDefault();
@@ -20,6 +27,8 @@ function Register() {
             }
 
             await axios.post("http://localhost:5000/auth",registerData);
+            await getLoddedIn();
+            navigate("/");
             
         } catch (error) {
             console.error(error);

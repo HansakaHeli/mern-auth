@@ -119,5 +119,28 @@ router.get("/logout",(req,res)=>{
     }).send();
 })
 
+router.get("/loggedIn",(req,res)=>{
+
+    try {
+
+        const token = req.cookies.token; // get the token by using cookies
+
+        if(!token){
+            return res.json(false);
+        }
+
+        // check token secrect is mathed with our secrect and decode the token
+        jwt.verify(token,process.env.JWT_SECRET); // If this is a error (Unverfied token) call catch block
+
+        res.send(true); // You are logged in
+
+    } catch (error) {
+        console.log(error);
+        res.json(false);
+
+    }
+
+})
+
 
 module.exports = router;

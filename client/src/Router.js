@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AuthContext from "./context/AuthContext";
+import Customers from "./components/customers/Customers";
 
 function Router(){
 
@@ -24,7 +25,7 @@ function Router(){
             {
                 loggedIn == true && (
                     <>
-                    <Route path="/customer"></Route>
+                    <Route path="/customer" element={<Customers/>}></Route>
                     </>
                 )
             }   
